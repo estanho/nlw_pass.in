@@ -11,11 +11,24 @@ datasource db {
 }
 
 model Event {
-  id                String  @id @default(uuid())
-  title             String
-  details           String?
-  slug              String  @unique
-  maximum_attendees Int?
+  id               String     @id @default(uuid())
+  title            String
+  details          String?
+  slug             String     @unique
+  maximumAttendees Int?
+  attendees        Attendee[]
 
   @@map("events")
+}
+
+model Attendee {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String
+  createdAt DateTime @default(now())
+  eventId   String
+  event     Event    @relation(fields: [eventId], references: [id])
+
+  @@unique([eventId, email])
+  @@map("attendees")
 }

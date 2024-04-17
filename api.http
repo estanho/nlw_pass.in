@@ -2,7 +2,25 @@ POST http://localhost:3333/events
 Content-Type: application/json
 
 {
-  "title": "Unit Summit",
-  "details": "Um evento para quem é apaixoado por programação.",
-  "maximum_attendees": 100
+  "title": "Novo evento",
+  "details": "null",
+  "maximumAttendees": 1
 }
+
+###
+
+POST http://localhost:3333/events/9927bd5a-d9fe-4b7d-8a8f-ada30a1c2eb2/attendees
+Content-Type: application/json
+
+{
+  "name": "Pedro Henrique",
+  "email": "pedrohenrique.teste@gmail.com"
+}
+
+###
+
+GET http://localhost:3333/events/9927bd5a-d9fe-4b7d-8a8f-ada30a1c2eb2
+
+###
+
+GET http://localhost:3333/attendees/4/badge
